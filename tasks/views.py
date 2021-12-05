@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def main(request):
-    return render(request, 'todo/list.html')
+    return render(request, 'tasks/list.html')
