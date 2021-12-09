@@ -14,8 +14,8 @@
 {% endif %}
 
 <hr>
-<h2><a href="{% url 'task-create' %}"> Create a new task </a></h2>
-<h1>To Do list</h1>
+<h2><a href="{% url 'task-create' %}">Create a new task</a></h2>
+<h1>To Do list </h1>
 <table>
     <tr>
         <th>Item</th>
@@ -25,9 +25,9 @@
     {% for task in tasks %}
     <tr>
         <td>{{task.title }}</td>
-        <td><a href="{% url 'task' task.id %}"> View </a></td>
-        <td><a href="{% url 'task-update' task.id %}"> Edit </a></td>
-        <td><a href="{% url 'task-delete' task.id %}"> Delete </a></td>
+        <td><a href="{% url 'task' task.id %}">View</a></td>
+        <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
     </tr>
     {% empty %}
     <h3>No items in list</h3>
