@@ -1,14 +1,13 @@
-from django.shortcuts import redirect
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, FormView
-from django.urls import reverse_lazy
-
-from django.contrib.auth.views import LoginView
-
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, FormView
 
 from .models import Task
+
 
 # Create your views here.
 
@@ -50,7 +49,16 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context["tasks"].filter(user=self.request.user)
         context['count'] = context["tasks"].filter(complete=False).count()
-        return context
+
+        # search logic:
+        search_input = self.request.GET.get('search-area') or ''
+        if search_input:
+            # adding filer for searching
+            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+
+        context['search_input'] = search_input
+
+    return context
 
 
 class DetailView(LoginRequiredMixin, DetailView):

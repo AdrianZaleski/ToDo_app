@@ -5,7 +5,6 @@
     <title>Task list view</title>
 </head>
 <body>
-
 {% if request.user.is_authenticated %}
     <p>{{ request.user }}</p>
     <a href="{% url 'logout' %}">Logout</a>
@@ -16,6 +15,12 @@
 <hr>
 <h2><a href="{% url 'task-create' %}">Create a new task</a></h2>
 <h1>To Do list </h1>
+
+<form method="get">
+    <input type="text" name="search-area" value="{{ search_input }}">
+    <input type="submit" value="Search">
+</form>
+
 <table>
     <tr>
         <th>Item</th>
