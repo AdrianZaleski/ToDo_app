@@ -14,11 +14,16 @@
     {% endif %}
 </div>
 
-<!--<h2><a href="{% url 'task-create' %}">Create a new task</a></h2>-->
-<!--<form method="get">-->
-<!--    <input type="text" name="search-area" value="{{ search_input }}">-->
-<!--    <input type="submit" value="Search">-->
-<!--</form>-->
+<div id="search-add-wrapper">
+    <form method="get" style="margin-top: 20px; display: flex;">
+        <input type="text" name="search-area" value="{{ search_input }}">
+        <input class="button" type="submit" value="Search">
+    </form>
+    <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+</div>
+
+
+
 
 
 <div class="task-items-wrapper">

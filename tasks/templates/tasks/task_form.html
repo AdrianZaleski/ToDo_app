@@ -1,21 +1,17 @@
 {% extends 'tasks/main.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Task</title>
-</head>
-<body>
-<h3>Task Form</h3>
+<div class="header-bar">
+    <a href="{% url 'tasks' %}">&#8592; Back</a>
+</div>
 
-<a href="{% url 'tasks' %}">Go back to list</a>
-<form action="" method="post">
+<div class="card-body">
+    <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <input class='button' type="submit" value="Submit">
 </form>
-</body>
-</html>
+
+</div>
+
 {% endblock content%}
